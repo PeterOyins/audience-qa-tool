@@ -196,7 +196,7 @@
 <!-- Feed Container -->
 <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-surface-container-lowest relative" id="questions-feed">
 <!-- Empty State -->
-<div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-surface-container-lowest z-10" id="empty-state">
+<div class="absolute inset-0 flex-col items-center justify-center p-8 text-center bg-surface-container-lowest z-10" id="empty-state">
 <div class="text-[64px] text-surface-variant mb-4 select-none">💬</div>
 <h4 class="font-headline-md text-headline-md text-secondary mb-2">Waiting for questions...</h4>
 <p class="font-body-base text-body-base text-outline max-w-sm">When your audience submits questions, they will appear here in real-time.</p>
@@ -311,7 +311,7 @@
                             id: 'q_' + Date.now(),
                             text: ['How does this scale?', 'Will the slides be available?', 'Can you explain the last point?', 'Is this open source?'][Math.floor(Math.random() * 4)],
                             upvotes: Math.floor(Math.random() * 5),
-                            timestamp: Date.now()
+                            created_at: new Date().toISOString()
                         };
                         resolve([...state.questions, newQ].sort((a,b) => b.upvotes - a.upvotes));
                     } else {
@@ -409,7 +409,7 @@
             qCount.textContent = `${questions.length} total`;
 
             if (questions.length === 0) {
-                emptyState.classList.remove('hidden');
+                emptyState.style.display = 'flex';
                 // Remove all cards
                 Array.from(questionsFeed.children).forEach(child => {
                     if (child.id !== 'empty-state') child.remove();
@@ -417,7 +417,7 @@
                 return;
             }
 
-            emptyState.classList.add('hidden');
+            emptyState.style.display = 'none';
 
             // Build new DOM (Full re-render for simplicity, virtual DOM/diffing better for prod)
             const frag = document.createDocumentFragment();

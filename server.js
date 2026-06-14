@@ -4,6 +4,7 @@ const cors = require('cors');
 const { nanoid } = require('nanoid');
 const dbPromise = require('./db');
 
+
 (async () => {
     let pool;
     try {
@@ -118,6 +119,14 @@ const dbPromise = require('./db');
         } catch (err) {
             res.status(500).json({ error: err.message });
         }
+    });
+
+    app.get('/dashboard', (req, res) => {
+        res.sendFile('dashboard.html', { root: './public' });
+    });
+
+    app.get('/audience', (req, res) => {
+        res.sendFile('audience.html', { root: './public' });
     });
 
     const PORT = process.env.PORT || 3000;
