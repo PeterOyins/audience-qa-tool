@@ -2,7 +2,12 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL || null,
-    ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL || null,
+    ssl: process.env.DATABASE_URL ? {
+        rejectUnauthorized: process.env.NODE_ENV !== 'production'
+    } : false
+});
 });
 
 // Create tables if they don't exist
