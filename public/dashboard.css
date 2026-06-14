@@ -44,7 +44,7 @@ header{
 .text-green-500{ color:var(--primary) !important; }
 
 /* Layout: left QR panel and right feed */
-#view-dashboard{ display:flex; flex-direction:column; }
+#view-dashboard:not(.hidden){ display:flex; flex-direction:column; }
 @media(min-width:960px){
   #view-dashboard main{ display:flex; gap:24px; }
   #view-dashboard main > section:first-of-type{ flex:0 0 40%; background:var(--page-bg); border-right:1px solid var(--card-border); padding:32px; display:flex; align-items:center; justify-content:center; }
