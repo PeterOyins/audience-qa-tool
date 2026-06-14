@@ -22,7 +22,7 @@ async function initDb() {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS questions (
             id SERIAL PRIMARY KEY,
-            room_id TEXT REFERENCES rooms(id),
+            room_id TEXT REFERENCES rooms(id) ON DELETE CASCADE,
             text TEXT NOT NULL,
             upvotes INTEGER DEFAULT 0,
             status TEXT DEFAULT 'active',
