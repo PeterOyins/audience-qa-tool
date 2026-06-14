@@ -1,109 +1,114 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const db = require('./db');
+const { nanoid } = require('nanoid');
+const pool = require('./db');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/', (req, res) => res.send('QA Tool API running'));
 
-app.use(express.static('public'));
+// Create room
+app.post('/rooms', async (req, res) => {
+    const { name } = req.body;
+    if (!name) return res.status(400).json({ error: 'Room name is required' });
 
-// Generate a short unique ID for rooms
-const { nanoid } = require('nanoid');
-
-app.post('/rooms', (req, res) => {
-  const { name } = req.body;
-  if (!name) return res.status(400).json({ error: 'Room name is required' });
-
-  const id = nanoid(6); // e.g. "x7f3kq"
-
-  db.run(
-    'INSERT INTO rooms (id, name) VALUES (?, ?)',
-    [id, name],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ id, name, url: `/room/${id}` });
+    const id = nanoid(6);
+    try {
+        await pool.query('INSERT INTO rooms (id, name) VALUES ($1, $2)', [id, name]);
+        res.json({ id, name, url: `/room/${id}` });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  );
 });
 
-//SUBMIT A QUESTION TO A ROOM
-app.post('/rooms/:roomId/questions', (req, res) => {
-  const { roomId } = req.params;
-  const { text } = req.body;
-
-  if (!text || text.trim().length === 0) {
-    return res.status(400).json({ error: 'Question text is required' });
-  }
-  if (text.length > 280) {
-    return res.status(400).json({ error: 'Question must be 280 characters or less' });
-  }
-
-  db.run(
-    'INSERT INTO questions (room_id, text) VALUES (?, ?)',
-    [roomId, text.trim()],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ id: this.lastID, room_id: roomId, text, upvotes: 0, status: 'active' });
+// Get room by ID
+app.get('/rooms/:id', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM rooms WHERE id = $1', [req.params.id]);
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Room not found' });
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  );
 });
 
-// GET QUESTIONS FOR A ROOM, SORTED BY UPVOTES DESC AND CREATED_AT ASC
-app.get('/rooms/:roomId/questions', (req, res) => {
-  const { roomId } = req.params;
-
-  db.all(
-    `SELECT * FROM questions 
-     WHERE room_id = ? AND status = 'active' 
-     ORDER BY upvotes DESC, created_at ASC`,
-    [roomId],
-    (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json(rows);
+// Get questions for a room
+app.get('/rooms/:id/questions', async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT * FROM questions 
+             WHERE room_id = $1 AND status = 'active' 
+             ORDER BY upvotes DESC, created_at ASC`,
+            [req.params.id]
+        );
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  );
 });
 
-// UPVOTE A QUESTION
-app.post('/questions/:id/upvote', (req, res) => {
-  const { id } = req.params;
+// Submit a question
+app.post('/rooms/:roomId/questions', async (req, res) => {
+    const { text } = req.body;
+    if (!text || text.trim().length === 0) return res.status(400).json({ error: 'Question text is required' });
+    if (text.length > 280) return res.status(400).json({ error: 'Question must be 280 characters or less' });
 
-  db.run(
-    'UPDATE questions SET upvotes = upvotes + 1 WHERE id = ?',
-    [id],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      if (this.changes === 0) return res.status(404).json({ error: 'Question not found' });
-      res.json({ success: true });
+    try {
+        const result = await pool.query(
+            'INSERT INTO questions (room_id, text) VALUES ($1, $2) RETURNING *',
+            [req.params.roomId, text.trim()]
+        );
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  );
 });
 
-// ARCHIVE A QUESTION (SO IT NO LONGER APPEARS IN THE ACTIVE LIST)
-app.post('/questions/:id/archive', (req, res) => {
-  const { id } = req.params;
-
-  db.run(
-    `UPDATE questions SET status = 'archived' WHERE id = ?`,
-    [id],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      if (this.changes === 0) return res.status(404).json({ error: 'Question not found' });
-      res.json({ success: true });
+// Upvote a question
+app.post('/questions/:id/upvote', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'UPDATE questions SET upvotes = upvotes + 1 WHERE id = $1 RETURNING *',
+            [req.params.id]
+        );
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Question not found' });
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-  );
 });
 
-// GET ROOM DETAILS
-app.get('/rooms/:id', (req, res) => {
-    const { id } = req.params;
-    db.get('SELECT * FROM rooms WHERE id = ?', [id], (err, row) => {
-        if (err) return res.status(500).json({ error: err.message });
-        if (!row) return res.status(404).json({ error: 'Room not found' });
-        res.json(row);
-    });
+// Archive a question
+app.post('/questions/:id/archive', async (req, res) => {
+    try {
+        const result = await pool.query(
+            `UPDATE questions SET status = 'archived' WHERE id = $1 RETURNING *`,
+            [req.params.id]
+        );
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Question not found' });
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
-app.listen(3000, () => console.log('Server on http://localhost:3000'));
+
+// Delete a question
+app.delete('/questions/:id', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM questions WHERE id = $1 RETURNING *',
+            [req.params.id]
+        );
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Question not found' });
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server on port ${PORT}`));
