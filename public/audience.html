@@ -209,7 +209,9 @@
 </nav>
 <script>
         
-        const API_BASE = `${window.location.protocol}//${window.location.hostname}:3000`; // Replace with your actual local IP
+        const API_BASE = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000'
+            : 'https://your-app-name.up.railway.app'; // Replace with your actual local IP
         let pollInterval = null;
         document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
