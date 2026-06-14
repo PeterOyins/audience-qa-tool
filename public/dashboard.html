@@ -241,6 +241,17 @@
         const qCount = document.getElementById('q-count');
         const fetchError = document.getElementById('fetch-error');
 
+        // Restore session on page load
+        const savedRoom = localStorage.getItem('activeRoom');
+        if (savedRoom) {
+            try {
+                const room = JSON.parse(savedRoom);
+                setupDashboard(room);
+            } catch (e) {
+                localStorage.removeItem('activeRoom');
+            }
+        }
+
         // --- UI Logic ---
         function switchView(viewName) {
             Object.values(views).forEach(v => v.classList.add('hidden'));
@@ -347,6 +358,8 @@
             state.roomId = room.id;
             state.roomName = room.name;
             
+            // Save session to localStorage so refresh restores it
+            localStorage.setItem('activeRoom', JSON.stringify({ id: room.id, name: room.name }));
             // Populate UI
             dashSessionName.textContent = room.name;
             roomIdDisplay.textContent = room.id;
@@ -380,6 +393,7 @@
         async function poll() {
             try {
                 const newQuestions = await fetchQuestionsAPI(state.roomId);
+                console.log('Questions fetched:', JSON.stringify(newQuestions));
                 showError(fetchError, false);
                 renderQuestions(newQuestions);
             } catch (err) {
@@ -389,7 +403,7 @@
 
         function renderQuestions(questions) {
             // Check if lists are identical (naive check for simplicity, normally check IDs/votes)
-            if (JSON.stringify(state.questions) === JSON.stringify(questions) && questions.length > 0) return;
+        
             
             state.questions = questions;
             qCount.textContent = `${questions.length} total`;
@@ -423,7 +437,7 @@
                     <div class="flex-1 min-w-0">
                         <p class="font-headline-md text-[18px] text-on-surface leading-snug mb-3 whitespace-pre-wrap">${escapeHTML(q.text)}</p>
                         <div class="flex items-center justify-between mt-auto">
-                            <span class="text-xs text-outline font-small">${new Date(q.timestamp || Date.now()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            <span class="text-xs text-outline font-small">${new Date(q.created_at || Date.now()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
                             <button class="btn-archive text-xs font-label-caps uppercase tracking-wide text-secondary border border-surface-variant rounded px-3 py-1.5 hover:border-error hover:text-error hover:bg-error-container/50 transition-colors flex items-center gap-1">
                                 <span class="material-symbols-outlined text-[14px]">inventory_2</span>
                                 Archive
@@ -496,8 +510,9 @@
         });
 
         btnEndSession.addEventListener('click', () => {
-            if(confirm('Are you sure you want to end this session? All questions will be lost.')) {
-                if(state.pollInterval) clearInterval(state.pollInterval);
+            if (confirm('Are you sure you want to end this session?')) {
+                if (state.pollInterval) clearInterval(state.pollInterval);
+                localStorage.removeItem('activeRoom'); // clear saved session
                 state.roomId = null;
                 state.questions = [];
                 sessionInput.value = '';
