@@ -1,0 +1,100 @@
+:root {
+    --scrollbar: #e2e2e2;
+    --scrollbar-hover: #c7c4d8;
+}
+
+html,
+body {
+    min-height: max(884px, 100dvh);
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f9f9f9;
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.max-w-600 {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover);
+}
+
+#room-name-display {
+    max-width: min(62vw, 420px);
+}
+
+#question-input {
+    min-height: 124px;
+}
+
+#question-input::placeholder {
+    color: #777587;
+}
+
+#submit-btn,
+button[onclick*="handleUpvote"],
+nav a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#questions-container > div:not(#empty-state) {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+#questions-container > div:not(#empty-state):hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+button[onclick*="handleUpvote"]:not(:disabled):hover {
+    color: #ffffff;
+    background: #4f46e5;
+}
+
+button[onclick*="handleUpvote"]:disabled {
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    nav.md\:hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #room-name-display {
+        max-width: 48vw;
+    }
+
+    nav a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
