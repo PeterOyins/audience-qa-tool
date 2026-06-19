@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Q&amp;A Live</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
@@ -88,103 +87,147 @@
                     "label-caps": ["13px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
                     "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
                     "small": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                    "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
                     "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
             }
           }
         }
       }
     </script>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="audience.css">
+=======
+<<<<<<< Updated upstream
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .max-w-600 {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e2e2;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c7c4d8;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+>>>>>>> Stashed changes
   </head>
+=======
+<link rel="stylesheet" href="audience.css">
+</head>
+>>>>>>> Stashed changes
 <body class="bg-background text-on-surface antialiased min-h-screen pb-24 md:pb-0">
-<!-- TopAppBar from JSON -->
-<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-on-surface-variant flex justify-between items-center h-16 px-margin-mobile w-full">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">forum</span>
-<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary dark:text-primary-fixed-dim">StageVoice • Main Room</h1>
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-on-surface-variant flex justify-between items-center h-16 px-margin-mobile">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex items-center gap-2 shrink-0">
+<span class="w-2 h-2 bg-error rounded-full animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-error uppercase tracking-wider">Live</span>
 </div>
-<div class="flex items-center">
-<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant">account_circle</span>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-on-surface truncate" id="room-name-display">Loading Room...</h1>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<button class="text-on-surface-variant hover:text-primary transition-colors" type="button" aria-label="Room information">
+<span class="material-symbols-outlined">info</span>
+</button>
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
 </div>
 </header>
-<main class="max-w-600 pt-20 px-margin-mobile">
-<!-- Error State (Hidden by default) -->
+<main class="max-w-600 pt-24 px-margin-mobile">
 <div class="hidden mt-8 p-6 bg-error-container text-on-error-container rounded-xl border border-error/20 text-center" id="error-state">
 <span class="material-symbols-outlined text-4xl mb-2">error</span>
 <h2 class="font-headline-md text-headline-md-mobile font-bold mb-2">Room Not Found</h2>
 <p class="font-body-base text-body-base">Please check the link and try again. A valid room ID is required.</p>
 </div>
-<!-- Main Content (Hidden until room is loaded) -->
+
 <div class="hidden" id="main-content">
-<!-- Room Info Context -->
-<div class="mb-8 mt-4 text-center">
-<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface mb-2" id="room-name-display">Loading Room...</h2>
-<p class="font-small text-small text-on-surface-variant">Ask questions anonymously or upvote others.</p>
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 mb-8 shadow-sm">
+<div class="flex items-center justify-between gap-4 mb-4">
+<h3 class="font-headline-md text-headline-md-mobile font-bold text-on-surface">Ask the Speaker</h3>
+<span class="font-small text-small text-on-surface-variant shrink-0" id="char-count">0/280</span>
 </div>
-<!-- Question Submission Area -->
-<section class="bg-surface-container-lowest rounded-xl border border-surface-variant p-6 mb-8 shadow-sm">
-<h3 class="font-headline-md text-headline-md-mobile font-bold text-on-surface mb-4">Ask a Question</h3>
-<form class="flex flex-col gap-3" id="question-form">
+<form class="flex flex-col gap-4" id="question-form">
 <div class="relative">
-<textarea class="w-full bg-surface-bright border border-surface-variant rounded-lg p-3 pt-3 pb-8 font-body-base text-body-base text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-shadow resize-none" id="question-input" maxlength="280" placeholder="Type your question here... (280 characters max)" rows="4"></textarea>
-<div class="absolute bottom-3 right-3 flex items-center justify-end">
-<span class="font-small text-small text-on-surface-variant" id="char-count">0/280</span>
-</div>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl p-4 font-body-base text-body-base text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none" id="question-input" maxlength="280" placeholder="What's on your mind?" rows="3"></textarea>
 </div>
 <div class="hidden font-small text-small px-2 py-1 rounded" id="submit-message"></div>
-<button class="w-full h-12 bg-primary-container hover:bg-primary text-on-primary font-label-caps text-label-caps rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-2 shadow-sm" disabled="" id="submit-btn" type="submit">
+<button class="w-full h-12 bg-primary-container hover:bg-primary text-on-primary font-label-caps text-label-caps rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]" disabled id="submit-btn" type="submit">
 <span>Submit Question</span>
-<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
 </button>
 </form>
 </section>
-<!-- Questions Feed -->
+
 <section>
 <div class="flex justify-between items-center mb-4 px-1">
-<h3 class="font-headline-md text-headline-md-mobile font-bold text-on-surface">All Questions</h3>
-<span class="font-label-caps text-label-caps bg-surface-container-high text-on-surface px-3 py-1 rounded-full" id="question-count">(0)</span>
+<h3 class="font-headline-md text-headline-md-mobile font-bold text-on-surface">Questions</h3>
+<span class="font-label-caps text-label-caps bg-primary-container/10 text-primary px-3 py-1 rounded-full" id="question-count">0</span>
 </div>
 <div class="flex flex-col gap-4" id="questions-container">
-<!-- Empty State -->
 <div class="py-12 px-6 text-center bg-surface-container-lowest rounded-xl border border-surface-variant border-dashed" id="empty-state">
 <span class="material-symbols-outlined text-4xl text-outline mb-3">chat_bubble</span>
 <p class="font-body-base text-body-base text-on-surface-variant">No questions yet. Be the first to ask!</p>
 </div>
-<!-- Questions will be injected here by JS -->
 </div>
 </section>
 </div>
 </main>
-<!-- BottomNavBar from JSON (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant dark:border-on-surface-variant shadow-sm bg-surface dark:bg-surface-dim flex justify-around items-center h-20 px-2 pb-safe w-full">
-<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform duration-150" href="#">
+
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant dark:border-on-surface-variant shadow-sm bg-surface dark:bg-surface-dim flex justify-around items-center h-20 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-primary px-4 py-1" href="#">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
-<span class="font-label-caps text-label-caps mt-1">Feed</span>
+<span class="font-label-caps text-[11px] mt-1">Feed</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim scale-95 active:scale-90 transition-transform duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined">add_circle</span>
-<span class="font-label-caps text-label-caps mt-1">Ask</span>
+<span class="font-label-caps text-[11px] mt-1">Ask</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim scale-95 active:scale-90 transition-transform duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined">person</span>
-<span class="font-label-caps text-label-caps mt-1">My Qs</span>
+<span class="font-label-caps text-[11px] mt-1">My Qs</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim scale-95 active:scale-90 transition-transform duration-150" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined">more_horiz</span>
-<span class="font-label-caps text-label-caps mt-1">More</span>
+<span class="font-label-caps text-[11px] mt-1">More</span>
 </a>
 </nav>
 <script>
-        
-        const API_BASE = window.location.hostname === 'localhost' 
+        const API_BASE = window.location.hostname === 'localhost'
             ? 'http://localhost:3000'
+<<<<<<< Updated upstream
             : 'https://vox-llive.onrender.com'; // Replace with your actual local IP
+=======
+<<<<<<< Updated upstream
+            : 'https://your-app-name.up.railway.app'; // Replace with your actual local IP
+=======
+            : 'https://vox-llive.onrender.com';
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         let pollInterval = null;
+
         document.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
-            // Fallback to mock ID if none provided in URL
-            const roomId = urlParams.get('room') || MOCK_ROOM_ID; 
+            const roomId = urlParams.get('room');
 
             const errorState = document.getElementById('error-state');
             const mainContent = document.getElementById('main-content');
@@ -195,7 +238,6 @@
                 return;
             }
 
-            // Fetch real room info from backend
             try {
                 const res = await fetch(`${API_BASE}/rooms/${roomId}`);
                 if (!res.ok) throw new Error('Room not found');
@@ -208,7 +250,6 @@
                 return;
             }
 
-            // Question Submission Logic
             const questionInput = document.getElementById('question-input');
             const charCount = document.getElementById('char-count');
             const submitBtn = document.getElementById('submit-btn');
@@ -218,7 +259,7 @@
             questionInput.addEventListener('input', (e) => {
                 const len = e.target.value.length;
                 charCount.textContent = `${len}/280`;
-                
+
                 if (len > 280) {
                     charCount.classList.add('text-error');
                     charCount.classList.remove('text-on-surface-variant');
@@ -252,13 +293,14 @@
                     charCount.textContent = '0/280';
                     submitMessage.textContent = 'Question submitted!';
                     submitMessage.className = 'block font-small text-small px-3 py-2 rounded bg-surface-variant text-on-surface mb-2';
+                    pollQuestions(roomId);
                     setTimeout(() => submitMessage.classList.add('hidden'), 3000);
                 } catch (err) {
                     submitMessage.textContent = 'Failed to submit. Please try again.';
                     submitMessage.className = 'block font-small text-small px-3 py-2 rounded bg-error-container text-on-error-container mb-2';
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Submit Question</span><span class="material-symbols-outlined text-[18px]">send</span>';
+                    submitBtn.innerHTML = '<span>Submit Question</span><span class="material-symbols-outlined text-[20px]">send</span>';
                 }
             });
         });
@@ -267,12 +309,11 @@
             const container = document.getElementById('questions-container');
             const countDisplay = document.getElementById('question-count');
             const emptyState = document.getElementById('empty-state');
-            
-            countDisplay.textContent = `(${questions.length})`;
+
+            countDisplay.textContent = questions.length;
 
             if (questions.length === 0) {
                 emptyState.classList.remove('hidden');
-                // Remove all other elements
                 Array.from(container.children).forEach(child => {
                     if (child.id !== 'empty-state') child.remove();
                 });
@@ -280,46 +321,42 @@
             }
 
             emptyState.classList.add('hidden');
-            
-            // Clear existing questions
+
             Array.from(container.children).forEach(child => {
                 if (child.id !== 'empty-state') child.remove();
             });
 
-            // Sort by upvotes (descending)
             const sortedQuestions = [...questions].sort((a, b) => b.upvotes - a.upvotes);
 
             sortedQuestions.forEach(q => {
                 const isUpvoted = localStorage.getItem(`upvoted_${q.id}`) === 'true';
-                
+
                 const card = document.createElement('div');
                 card.className = 'bg-surface-container-lowest border border-surface-variant rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06)] flex gap-4';
-                
+
                 card.innerHTML = `
                     <div class="flex flex-col items-center justify-start w-12 shrink-0">
-                        <button 
+                        <button
                             onclick="handleUpvote('${q.id}')"
                             class="w-11 h-11 rounded-full flex items-center justify-center transition-colors ${isUpvoted ? 'bg-surface-variant text-outline cursor-not-allowed' : 'bg-surface-bright hover:bg-surface-variant text-primary-container border border-surface-variant'}"
                             ${isUpvoted ? 'disabled' : ''}
                             aria-label="Upvote question"
                         >
-                            ▲
+                            <span class="material-symbols-outlined text-[22px]">keyboard_arrow_up</span>
                         </button>
                         <span class="font-headline-md text-headline-md-mobile font-bold mt-2 ${isUpvoted ? 'text-outline' : 'text-primary-container'}" id="upvote-count-${q.id}">${q.upvotes}</span>
                     </div>
                     <div class="flex-1 pt-1">
-                        <p class="font-body-base text-body-base font-semibold text-on-surface leading-relaxed">${q.text}</p>
+                        <p class="font-body-base text-body-base font-semibold text-on-surface leading-relaxed">${escapeHTML(q.text)}</p>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // Global function for upvote handler
         window.handleUpvote = async function(id) {
             if (localStorage.getItem(`upvoted_${id}`) === 'true') return;
 
-        // Optimistic UI update
             localStorage.setItem(`upvoted_${id}`, 'true');
             const countEl = document.getElementById(`upvote-count-${id}`);
             if (countEl) countEl.textContent = parseInt(countEl.textContent) + 1;
@@ -332,10 +369,28 @@
                 const res = await fetch(`${API_BASE}/questions/${id}/upvote`, { method: 'POST' });
                 if (!res.ok) rollbackUpvote();
             } catch (err) {
+<<<<<<< Updated upstream
             // Revert if failed
                 rollbackUpvote();
+=======
+                localStorage.removeItem(`upvoted_${id}`);
+                if (countEl) countEl.textContent = Math.max(parseInt(countEl.textContent) - 1, 0);
+>>>>>>> Stashed changes
             }
         };
+
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>'"]/g,
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
         function startPolling(roomId) {
             if (pollInterval) clearInterval(pollInterval);
             pollQuestions(roomId);
@@ -353,4 +408,9 @@
             }
         }
     </script>
+<<<<<<< Updated upstream
 </body></html>
+=======
+</body>
+</html>
+>>>>>>> Stashed changes
