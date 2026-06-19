@@ -323,12 +323,17 @@
             localStorage.setItem(`upvoted_${id}`, 'true');
             const countEl = document.getElementById(`upvote-count-${id}`);
             if (countEl) countEl.textContent = parseInt(countEl.textContent) + 1;
+            const rollbackUpvote = () => {
+                localStorage.removeItem(`upvoted_${id}`);
+                if (countEl) countEl.textContent = Math.max(parseInt(countEl.textContent) - 1, 0);
+            };
 
             try {
-                await fetch(`${API_BASE}/questions/${id}/upvote`, { method: 'POST' });
+                const res = await fetch(`${API_BASE}/questions/${id}/upvote`, { method: 'POST' });
+                if (!res.ok) rollbackUpvote();
             } catch (err) {
             // Revert if failed
-                localStorage.removeItem(`upvoted_${id}`);
+                rollbackUpvote();
             }
         };
         function startPolling(roomId) {
