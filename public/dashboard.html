@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Speaker Dashboard</title>
@@ -8,94 +8,91 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-primary-fixed-variant": "#3323cc",
-                        "outline": "#777587",
-                        "on-surface-variant": "#464555",
-                        "surface-dim": "#dadada",
-                        "on-tertiary-container": "#ffd2be",
-                        "tertiary": "#7e3000",
-                        "on-secondary-container": "#656464",
-                        "inverse-primary": "#c3c0ff",
-                        "surface-container-low": "#f3f3f3",
-                        "primary-container": "#4f46e5",
-                        "background": "#f9f9f9",
-                        "on-background": "#1a1c1c",
-                        "surface-container-high": "#e8e8e8",
-                        "on-secondary-fixed-variant": "#474646",
-                        "on-secondary": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "surface-container": "#eeeeee",
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "surface-variant": "#e2e2e2",
-                        "error-container": "#ffdad6",
-                        "surface-container-lowest": "#ffffff",
-                        "surface": "#f9f9f9",
-                        "on-primary": "#ffffff",
-                        "on-primary-fixed": "#0f0069",
-                        "surface-tint": "#4d44e3",
-                        "tertiary-fixed": "#ffdbcc",
-                        "secondary-container": "#e5e2e1",
-                        "on-surface": "#1a1c1c",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "primary": "#3525cd",
-                        "tertiary-fixed-dim": "#ffb695",
-                        "inverse-surface": "#2f3131",
-                        "tertiary-container": "#a44100",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed-variant": "#7b2f00",
-                        "secondary": "#5f5e5e",
-                        "on-primary-container": "#dad7ff",
-                        "primary-fixed": "#e2dfff",
-                        "outline-variant": "#c7c4d8",
-                        "primary-fixed-dim": "#c3c0ff",
-                        "surface-container-highest": "#e2e2e2",
-                        "error": "#ba1a1a",
-                        "on-tertiary-fixed": "#351000",
-                        "on-tertiary": "#ffffff",
-                        "inverse-on-surface": "#f1f1f1",
-                        "surface-bright": "#f9f9f9",
-                        "secondary-fixed": "#e5e2e1"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "container-max": "1440px",
-                        "gutter": "24px",
-                        "unit": "4px",
-                        "margin-desktop": "40px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Inter"],
-                        "headline-lg-mobile": ["Inter"],
-                        "small": ["Inter"],
-                        "body-base": ["Inter"],
-                        "label-caps": ["Inter"],
-                        "headline-lg": ["Inter"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "small": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "label-caps": ["13px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
-                    }
-                }
-            }
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-fixed": "#351000",
+                "on-secondary-fixed-variant": "#474646",
+                "secondary-fixed-dim": "#c8c6c5",
+                "secondary-container": "#e5e2e1",
+                "on-surface-variant": "#464555",
+                "inverse-on-surface": "#f1f1f1",
+                "surface-container-low": "#f3f3f3",
+                "on-primary-fixed-variant": "#3323cc",
+                "background": "#f9f9f9",
+                "on-background": "#1a1c1c",
+                "tertiary-container": "#a44100",
+                "secondary": "#5f5e5e",
+                "surface-variant": "#e2e2e2",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffdbcc",
+                "surface": "#f9f9f9",
+                "inverse-surface": "#2f3131",
+                "on-primary": "#ffffff",
+                "surface-bright": "#f9f9f9",
+                "outline": "#777587",
+                "surface-container": "#eeeeee",
+                "primary": "#3525cd",
+                "outline-variant": "#c7c4d8",
+                "surface-container-high": "#e8e8e8",
+                "surface-dim": "#dadada",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "on-primary-container": "#dad7ff",
+                "on-tertiary-fixed-variant": "#7b2f00",
+                "error-container": "#ffdad6",
+                "primary-container": "#4f46e5",
+                "tertiary-fixed-dim": "#ffb695",
+                "tertiary": "#7e3000",
+                "on-tertiary-container": "#ffd2be",
+                "on-secondary": "#ffffff",
+                "primary-fixed": "#e2dfff",
+                "on-primary-fixed": "#0f0069",
+                "on-secondary-fixed": "#1c1b1b",
+                "on-surface": "#1a1c1c",
+                "secondary-fixed": "#e5e2e1",
+                "surface-tint": "#4d44e3",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#c3c0ff",
+                "on-secondary-container": "#656464",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#e2e2e2",
+                "inverse-primary": "#c3c0ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "margin-desktop": "40px",
+                "container-max": "1440px",
+                "unit": "4px",
+                "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "label-caps": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "small": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-base": ["Inter"]
+        },
+        "fontSize": {
+                "label-caps": ["13px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                "small": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
         }
+<<<<<<< Updated upstream
     </script>
     <link rel="stylesheet" href="dashboard.css">
   </head>
@@ -103,6 +100,17 @@
 <!-- View 1: Room Creation -->
 <main class="flex-1 flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface-container-lowest" id="view-create">
 <div class="w-full max-w-[480px] bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.06)] p-6 md:p-8">
+=======
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<main class="flex-1 flex items-center justify-center p-margin-mobile md:p-margin-desktop" id="view-create">
+<div class="w-full max-w-[480px] bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.06)] p-6 md:p-8 transition-transform duration-300 hover:shadow-lg">
+>>>>>>> Stashed changes
 <div class="text-center mb-8">
 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-container-low text-primary mb-4">
 <span class="material-symbols-outlined" style="font-size: 28px;">campaign</span>
@@ -111,88 +119,79 @@
 <p class="mt-2 text-secondary font-body-base text-body-base">Set up a dedicated room for live audience questions.</p>
 </div>
 <form class="space-y-6" id="create-room-form">
-<div>
+<div class="relative group">
 <label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase" for="session-name">Session Name</label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-surface-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:ring-offset-0 focus:border-primary-container transition-all text-body-base" id="session-name" name="session-name" placeholder="e.g. Tech Talk 2026" required="" type="text"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-300 text-body-base" id="session-name" name="session-name" placeholder="e.g. Tech Talk 2026" required type="text"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-focus-within:w-full"></div>
 </div>
 <div class="hidden text-error text-small font-small bg-error-container p-3 rounded-lg border border-error/20 flex items-start gap-2" id="create-error">
 <span class="material-symbols-outlined fill text-[18px]">error</span>
 <span class="error-msg">Failed to create room. Please try again.</span>
 </div>
-<button class="w-full h-12 bg-primary-container hover:bg-[#4338ca] text-white font-label-caps text-label-caps uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2" id="btn-create" type="submit">
+<button class="w-full h-12 bg-primary-container hover:bg-primary text-white font-label-caps text-label-caps uppercase tracking-wider rounded-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 shadow-sm hover:shadow-md" id="btn-create" type="submit">
 <span>Create Session</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
 </form>
 </div>
 </main>
-<!-- View 2: Moderation Dashboard -->
-<div class="hidden flex-col h-screen w-full bg-surface-container-lowest" id="view-dashboard">
-<!-- TopAppBar -->
-<header class="bg-surface-container-lowest border-b border-surface-variant shadow-sm flex-none h-16 w-full z-10 px-4 md:px-margin-desktop flex items-center justify-between">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[28px] fill">record_voice_over</span>
-<h2 class="font-headline-md text-headline-md text-on-surface truncate max-w-[200px] md:max-w-md" id="dash-session-name">Session Name</h2>
+
+<div class="hidden flex-col h-screen w-full bg-background" id="view-dashboard">
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-4 md:px-margin-desktop shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex items-center gap-2 shrink-0">
+<span class="w-2 h-2 bg-error rounded-full animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-error uppercase tracking-wider">Live</span>
 </div>
-<div class="flex items-center gap-2 md:gap-4">
-<div class="hidden md:flex items-center bg-surface-container-low border border-surface-variant rounded-lg px-3 py-1.5 h-10">
-<span class="material-symbols-outlined text-secondary text-[18px] mr-2">link</span>
-<span class="font-small text-small text-secondary select-all truncate max-w-[200px]" id="room-url-display">qna.app/r/xyz</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface truncate max-w-[200px] md:max-w-md" id="dash-session-name">Session Name</h1>
 </div>
-<button class="h-10 px-4 bg-surface-container-lowest border border-surface-variant hover:bg-surface-container-low text-on-surface font-label-caps text-label-caps rounded-lg transition-colors flex items-center gap-2" id="btn-copy-link">
-<span class="material-symbols-outlined text-[18px]">content_copy</span>
-<span class="hidden sm:inline">Copy Link</span>
-</button>
-<button class="h-10 px-3 md:px-4 bg-error-container hover:bg-error text-on-error-container hover:text-white font-label-caps text-label-caps rounded-lg transition-colors flex items-center gap-2 border border-error/20" id="btn-end-session">
+<div class="flex items-center gap-2 md:gap-4 shrink-0">
+<button class="h-10 px-3 md:px-4 bg-error-container hover:bg-error text-on-error-container hover:text-white font-label-caps text-label-caps rounded-lg transition-colors flex items-center gap-2 border border-error/20" id="btn-end-session" type="button">
 <span class="material-symbols-outlined text-[18px]">close</span>
-<span class="hidden sm:inline">End</span>
+<span class="hidden sm:inline">End Session</span>
 </button>
 </div>
 </header>
-<!-- Dashboard Layout -->
-<main class="flex-1 overflow-hidden flex flex-col md:flex-row w-full max-w-container-max mx-auto">
-<!-- Column A: Share Info -->
-<section class="w-full md:w-[40%] lg:w-[35%] bg-surface border-b md:border-b-0 md:border-r border-surface-variant p-6 md:p-8 flex flex-col h-auto md:h-full overflow-y-auto">
-<div class="sticky top-0 bg-surface z-10 pb-4">
-<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">share</span>
-                        Share this with your audience
-                    </h3>
-</div>
-<div class="flex flex-col items-center justify-center flex-1 py-8">
-<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm mb-6 flex flex-col items-center">
-<div class="w-48 h-48 bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden" id="qrcode">
-<!-- QR Code injected here -->
+
+<main class="flex-1 overflow-hidden flex flex-col md:flex-row w-full max-w-container-max mx-auto mt-16 pt-4 px-4 md:px-margin-desktop gap-6">
+<section class="w-full md:w-1/3 flex flex-col h-auto md:h-full overflow-y-auto space-y-6 pb-6">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06)] flex flex-col items-center">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">qr_code_scanner</span>
+Join Session
+</h3>
+<div class="bg-surface-container-low p-4 rounded-xl border border-surface-variant mb-6 w-full max-w-[240px] aspect-square flex items-center justify-center" id="qrcode">
 <span class="material-symbols-outlined text-outline text-4xl animate-pulse">qr_code_2</span>
 </div>
-<p class="mt-4 font-small text-small text-secondary text-center">Scan to ask questions</p>
+<p class="font-body-base text-body-base text-secondary text-center mb-4">Scan QR code or share the link below to allow audience to ask questions.</p>
+<div class="w-full relative group">
+<input class="w-full h-12 pl-4 pr-12 bg-surface-container-low border border-surface-variant rounded-lg font-small text-small text-on-surface truncate cursor-default select-all" id="room-url-display" readonly type="text" value="qna.app/r/xyz"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-secondary hover:text-primary transition-colors p-1" id="btn-copy-link" title="Copy Link" type="button">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
 </div>
-<div class="w-full max-w-xs space-y-4">
-<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-4">
+<div class="mt-4 w-full bg-surface-container-low border border-surface-variant rounded-lg p-3 text-center">
 <p class="font-label-caps text-label-caps text-on-surface-variant mb-1">Room ID</p>
-<p class="font-headline-md text-headline-md text-primary tracking-widest text-center py-2 bg-surface-container-low rounded font-mono" id="room-id-display">---</p>
-</div>
+<p class="font-headline-md text-[20px] font-bold text-primary font-mono tracking-wider" id="room-id-display">---</p>
 </div>
 </div>
 </section>
-<!-- Column B: Live Questions -->
-<section class="w-full md:w-[60%] lg:w-[65%] bg-surface-container-lowest flex flex-col h-[530px] md:h-full relative">
-<!-- Status Bar -->
-<div class="px-6 py-4 border-b border-surface-variant bg-surface-container-lowest flex items-center justify-between sticky top-0 z-20 shadow-sm">
-<div class="flex items-center gap-3">
-<div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
-<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Live Questions</h3>
+
+<section class="w-full md:w-2/3 flex flex-col h-[530px] md:h-full relative pb-6">
+<div class="flex justify-between items-center mb-4 px-1 sticky top-0 bg-background z-10 py-2">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+Live Questions
+</h3>
+<span class="font-label-caps text-label-caps bg-primary-container/10 text-primary px-3 py-1 rounded-full" id="q-count">0</span>
 </div>
-<div class="flex items-center gap-2">
-<span class="font-small text-small text-secondary bg-surface-container-low px-2 py-1 rounded-md border border-surface-variant" id="q-count">0 total</span>
-</div>
-</div>
-<div class="hidden absolute top-16 left-0 right-0 z-30 mx-6 mt-2 text-error text-small font-small bg-error-container p-3 rounded-lg border border-error/20 flex items-center justify-between" id="fetch-error">
+<div class="hidden absolute top-14 left-0 right-0 z-30 mx-1 mt-2 text-error text-small font-small bg-error-container p-3 rounded-lg border border-error/20 flex items-center justify-between" id="fetch-error">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined fill text-[18px]">wifi_off</span>
 <span class="error-msg">Connection lost. Reconnecting...</span>
 </div>
 </div>
+<<<<<<< Updated upstream
 <!-- Feed Container -->
 <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-surface-container-lowest relative" id="questions-feed">
 <!-- Empty State -->
@@ -200,47 +199,51 @@
 <div class="text-[64px] text-surface-variant mb-4 select-none">💬</div>
 <h4 class="font-headline-md text-headline-md text-secondary mb-2">Waiting for questions...</h4>
 <p class="font-body-base text-body-base text-outline max-w-sm">When your audience submits questions, they will appear here in real-time.</p>
+=======
+<div class="flex-1 overflow-y-auto space-y-4 pb-20 md:pb-4 pr-2" id="questions-feed">
+<div class="py-12 px-6 text-center bg-surface-container-lowest rounded-xl border border-surface-variant border-dashed mt-4 h-full flex flex-col items-center justify-center" id="empty-state">
+<span class="material-symbols-outlined text-4xl text-outline mb-3">forum</span>
+<p class="font-body-base text-body-base text-on-surface-variant">Waiting for questions. They will appear here in real-time.</p>
+>>>>>>> Stashed changes
 </div>
-<!-- Questions injected here via JS -->
 </div>
 </section>
 </main>
 </div>
-<!-- QR Code Library -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-        // --- State ---
         const state = {
             roomId: null,
             roomName: '',
             questions: [],
             pollInterval: null,
-            mockMode: false // Set to false to attempt real API calls
+            mockMode: false
         };
 
-        // --- DOM Elements ---
         const views = {
             create: document.getElementById('view-create'),
             dashboard: document.getElementById('view-dashboard')
         };
-        
+
         const createForm = document.getElementById('create-room-form');
         const sessionInput = document.getElementById('session-name');
         const btnCreate = document.getElementById('btn-create');
         const createError = document.getElementById('create-error');
-        
+
         const dashSessionName = document.getElementById('dash-session-name');
         const roomUrlDisplay = document.getElementById('room-url-display');
         const roomIdDisplay = document.getElementById('room-id-display');
         const qrcodeContainer = document.getElementById('qrcode');
         const btnCopyLink = document.getElementById('btn-copy-link');
         const btnEndSession = document.getElementById('btn-end-session');
-        
+
         const questionsFeed = document.getElementById('questions-feed');
         const emptyState = document.getElementById('empty-state');
         const qCount = document.getElementById('q-count');
         const fetchError = document.getElementById('fetch-error');
 
+<<<<<<< Updated upstream
         // Restore session on page load
         const savedRoom = localStorage.getItem('activeRoom');
         if (savedRoom) {
@@ -252,10 +255,24 @@
             }
         }
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
         // --- UI Logic ---
+=======
+        const savedRoom = localStorage.getItem('activeRoom');
+        if (savedRoom) {
+            try {
+                setupDashboard(JSON.parse(savedRoom));
+            } catch (e) {
+                localStorage.removeItem('activeRoom');
+            }
+        }
+
+>>>>>>> Stashed changes
         function switchView(viewName) {
             Object.values(views).forEach(v => v.classList.add('hidden'));
-            if(viewName === 'create') {
+            if (viewName === 'create') {
                 views.create.classList.remove('hidden');
                 views.create.classList.add('flex');
             } else if (viewName === 'dashboard') {
@@ -273,37 +290,28 @@
             }
         }
 
-        // --- API Helpers (Mockable) ---
-        const API_BASE = window.location.hostname === 'localhost' 
+        const API_BASE = window.location.hostname === 'localhost'
             ? 'http://localhost:3000'
             : 'https://vox-llive.onrender.com';
 
         async function createRoomAPI(name) {
-            console.log('mockMode is:', state.mockMode);
-            console.log('Hitting API at:', API_BASE);
-    
             if (state.mockMode) {
-                return new Promise(resolve => setTimeout(() => resolve({ id: 'R-' + Math.floor(1000 + Math.random() * 9000), name: name }), 600));
+                return new Promise(resolve => setTimeout(() => resolve({ id: 'R-' + Math.floor(1000 + Math.random() * 9000), name }), 600));
             }
-            try {
-                const res = await fetch(`${API_BASE}/rooms`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name })
-                });
-            console.log('Response status:', res.status);
-                const data = await res.json();
-                console.log('Response data:', data);
-                if (!res.ok) throw new Error('Network response was not ok');
-                return data;
-            } catch (err) {
-                console.error('createRoomAPI failed:', err);
-                throw err;
-            }
+
+            const res = await fetch(`${API_BASE}/rooms`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Network response was not ok');
+            return data;
         }
 
         async function fetchQuestionsAPI(roomId) {
             if (state.mockMode) {
+<<<<<<< Updated upstream
                 return new Promise(resolve => setTimeout(() => {
                     // Randomly add a new question sometimes in mock mode
                     if (Math.random() > 0.7 && state.questions.length < 10) {
@@ -318,7 +326,11 @@
                         resolve([...state.questions]);
                     }
                 }, 300));
+=======
+                return new Promise(resolve => setTimeout(() => resolve([...state.questions]), 300));
+>>>>>>> Stashed changes
             }
+
             const res = await fetch(`${API_BASE}/rooms/${roomId}/questions`);
             if (!res.ok) throw new Error('Network response was not ok');
             return res.json();
@@ -328,13 +340,12 @@
             if (state.mockMode) {
                 return new Promise(resolve => setTimeout(() => resolve({ success: true }), 300));
             }
+
             const res = await fetch(`${API_BASE}/questions/${questionId}/archive`, { method: 'POST' });
             if (!res.ok) throw new Error('Network response was not ok');
             return res.json();
         }
 
-        // --- Core Logic ---
-        
         createForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = sessionInput.value.trim();
@@ -357,6 +368,7 @@
         function setupDashboard(room) {
             state.roomId = room.id;
             state.roomName = room.name;
+<<<<<<< Updated upstream
             
             // Save session to localStorage so refresh restores it
             localStorage.setItem('activeRoom', JSON.stringify({ id: room.id, name: room.name }));
@@ -368,25 +380,33 @@
             roomUrlDisplay.textContent = shareUrl;
             
             // Generate QR
+=======
+            localStorage.setItem('activeRoom', JSON.stringify({ id: room.id, name: room.name }));
+
+            dashSessionName.textContent = room.name;
+            roomIdDisplay.textContent = room.id;
+
+            const shareUrl = `${window.location.origin}/audience.html?room=${encodeURIComponent(room.id)}`;
+            roomUrlDisplay.value = shareUrl;
+
+>>>>>>> Stashed changes
             qrcodeContainer.innerHTML = '';
             new QRCode(qrcodeContainer, {
                 text: shareUrl,
-                width: 160,
-                height: 160,
-                colorDark : "#111111",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.L
+                width: 200,
+                height: 200,
+                colorDark: "#4f46e5",
+                colorLight: "#f3f3f3",
+                correctLevel: QRCode.CorrectLevel.L
             });
 
             switchView('dashboard');
             startPolling();
         }
 
-        // --- Polling & Render Logic ---
-
         function startPolling() {
             if (state.pollInterval) clearInterval(state.pollInterval);
-            poll(); // Initial call
+            poll();
             state.pollInterval = setInterval(poll, 4000);
         }
 
@@ -402,15 +422,25 @@
         }
 
         function renderQuestions(questions) {
+<<<<<<< Updated upstream
             // Check if lists are identical (naive check for simplicity, normally check IDs/votes)
         
             
+=======
+>>>>>>> Stashed changes
             state.questions = questions;
-            qCount.textContent = `${questions.length} total`;
+            qCount.textContent = questions.length;
 
             if (questions.length === 0) {
+<<<<<<< Updated upstream
                 emptyState.style.display = 'flex';
+=======
+                emptyState.classList.remove('hidden');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
                 // Remove all cards
+=======
+>>>>>>> Stashed changes
                 Array.from(questionsFeed.children).forEach(child => {
                     if (child.id !== 'empty-state') child.remove();
                 });
@@ -419,21 +449,22 @@
 
             emptyState.style.display = 'none';
 
-            // Build new DOM (Full re-render for simplicity, virtual DOM/diffing better for prod)
             const frag = document.createDocumentFragment();
-            
-            questions.forEach(q => {
+            const sortedQuestions = [...questions].sort((a, b) => b.upvotes - a.upvotes);
+
+            sortedQuestions.forEach(q => {
                 const card = document.createElement('div');
-                card.className = 'bg-surface-container-lowest border border-surface-variant rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex gap-4 transition-all duration-300 transform translate-y-0 opacity-100 hover:shadow-md';
+                card.className = 'bg-surface-container-lowest border border-surface-variant rounded-xl p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06)] flex gap-4 transition-all duration-300 transform translate-y-0 opacity-100 hover:shadow-md';
                 card.dataset.id = q.id;
-                
+
                 card.innerHTML = `
-                    <div class="flex flex-col items-center justify-start pt-1">
-                        <div class="w-10 h-10 rounded-lg bg-primary-fixed flex flex-col items-center justify-center text-on-primary-fixed border border-primary-fixed-dim">
-                            <span class="material-symbols-outlined text-[16px] leading-none mb-0.5">keyboard_arrow_up</span>
-                            <span class="font-label-caps text-[12px] leading-none font-bold">${q.upvotes}</span>
-                        </div>
+                    <div class="flex flex-col items-center justify-start w-12 shrink-0">
+                        <button class="upvote-btn w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 bg-surface-bright hover:bg-surface-variant text-primary-container border border-surface-variant" aria-label="Upvote preview" type="button">
+                            <span class="material-symbols-outlined text-[22px]">keyboard_arrow_up</span>
+                        </button>
+                        <span class="font-headline-md text-[16px] font-bold mt-2 text-primary-container upvote-count">${q.upvotes}</span>
                     </div>
+<<<<<<< Updated upstream
                     <div class="flex-1 min-w-0">
                         <p class="font-headline-md text-[18px] text-on-surface leading-snug mb-3 whitespace-pre-wrap">${escapeHTML(q.text)}</p>
                         <div class="flex items-center justify-between mt-auto">
@@ -441,18 +472,33 @@
                             <button class="btn-archive text-xs font-label-caps uppercase tracking-wide text-secondary border border-surface-variant rounded px-3 py-1.5 hover:border-error hover:text-error hover:bg-error-container/50 transition-colors flex items-center gap-1">
                                 <span class="material-symbols-outlined text-[14px]">inventory_2</span>
                                 Archive
+=======
+                    <div class="flex-1 pt-1 min-w-0 flex flex-col justify-between">
+                        <p class="font-body-base text-body-base font-semibold text-on-surface leading-relaxed mb-4 whitespace-pre-wrap">${escapeHTML(q.text)}</p>
+                        <div class="flex items-center justify-between mt-auto border-t border-surface-variant pt-3">
+                            <span class="text-xs text-outline font-small flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">schedule</span>
+                                ${new Date(q.created_at || q.timestamp || Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </span>
+                            <button class="btn-archive text-xs font-label-caps uppercase tracking-wide text-secondary hover:text-error transition-colors flex items-center gap-1 group" type="button">
+                                <span class="material-symbols-outlined text-[16px] group-hover:scale-110 transition-transform">inventory_2</span>
+                                Dismiss
+>>>>>>> Stashed changes
                             </button>
                         </div>
                     </div>
                 `;
-                
-                // Event listener for archive
+
+                const upvoteBtn = card.querySelector('.upvote-btn');
+                upvoteBtn.addEventListener('click', () => {
+                   upvoteBtn.classList.add('animate-heartbeat', 'bg-primary-container/20');
+                   setTimeout(() => upvoteBtn.classList.remove('animate-heartbeat', 'bg-primary-container/20'), 400);
+                });
+
                 card.querySelector('.btn-archive').addEventListener('click', () => handleArchive(q.id, card));
-                
                 frag.appendChild(card);
             });
 
-            // Clear existing cards
             Array.from(questionsFeed.children).forEach(child => {
                 if (child.id !== 'empty-state') child.remove();
             });
@@ -460,32 +506,25 @@
         }
 
         async function handleArchive(id, cardElement) {
-            // Optimistic UI update
-            cardElement.style.opacity = '0.5';
-            cardElement.style.transform = 'scale(0.98)';
+            cardElement.classList.add('slide-out');
             const btn = cardElement.querySelector('.btn-archive');
-            btn.innerHTML = '<span class="material-symbols-outlined text-[14px] animate-spin">sync</span>';
             btn.disabled = true;
 
             try {
                 await archiveQuestionAPI(id);
-                // Remove from state
-                state.questions = state.questions.filter(q => q.id !== id);
-                renderQuestions(state.questions);
+                setTimeout(() => {
+                    state.questions = state.questions.filter(q => q.id !== id);
+                    renderQuestions(state.questions);
+                }, 400);
             } catch (err) {
-                // Revert
-                cardElement.style.opacity = '1';
-                cardElement.style.transform = 'scale(1)';
-                btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">inventory_2</span>Archive';
+                cardElement.classList.remove('slide-out');
                 btn.disabled = false;
-                alert('Failed to archive question');
+                alert('Failed to dismiss question');
             }
         }
 
-        // --- Utilities & Listeners ---
-        
         function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
+            return String(str).replace(/[&<>'"]/g,
                 tag => ({
                     '&': '&amp;',
                     '<': '&lt;',
@@ -497,22 +536,33 @@
         }
 
         btnCopyLink.addEventListener('click', () => {
-            const url = roomUrlDisplay.textContent;
+            const url = roomUrlDisplay.value;
             navigator.clipboard.writeText(url).then(() => {
-                const originalHTML = btnCopyLink.innerHTML;
-                btnCopyLink.innerHTML = '<span class="material-symbols-outlined text-[18px] text-green-600">check</span><span class="hidden sm:inline text-green-600">Copied!</span>';
-                btnCopyLink.classList.add('border-green-200', 'bg-green-50');
+                const icon = btnCopyLink.querySelector('span');
+                icon.textContent = 'check';
+                icon.classList.add('text-green-600');
                 setTimeout(() => {
-                    btnCopyLink.innerHTML = originalHTML;
-                    btnCopyLink.classList.remove('border-green-200', 'bg-green-50');
+                    icon.textContent = 'content_copy';
+                    icon.classList.remove('text-green-600');
                 }, 2000);
             });
         });
 
         btnEndSession.addEventListener('click', () => {
+<<<<<<< Updated upstream
             if (confirm('Are you sure you want to end this session?')) {
                 if (state.pollInterval) clearInterval(state.pollInterval);
                 localStorage.removeItem('activeRoom'); // clear saved session
+=======
+<<<<<<< Updated upstream
+            if(confirm('Are you sure you want to end this session? All questions will be lost.')) {
+                if(state.pollInterval) clearInterval(state.pollInterval);
+=======
+            if (confirm('Are you sure you want to end this session? This action cannot be undone.')) {
+                if (state.pollInterval) clearInterval(state.pollInterval);
+                localStorage.removeItem('activeRoom');
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 state.roomId = null;
                 state.questions = [];
                 sessionInput.value = '';
@@ -521,6 +571,6 @@
                 switchView('create');
             }
         });
-
     </script>
-</body></html>
+</body>
+</html>
