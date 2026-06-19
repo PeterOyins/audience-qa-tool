@@ -94,49 +94,8 @@
         }
       }
     </script>
-<<<<<<< Updated upstream
     <link rel="stylesheet" href="audience.css">
-=======
-<<<<<<< Updated upstream
-<style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .max-w-600 {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e2e2e2;
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #c7c4d8;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
->>>>>>> Stashed changes
   </head>
-=======
-<link rel="stylesheet" href="audience.css">
-</head>
->>>>>>> Stashed changes
 <body class="bg-background text-on-surface antialiased min-h-screen pb-24 md:pb-0">
 <header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-on-surface-variant flex justify-between items-center h-16 px-margin-mobile">
 <div class="flex items-center gap-3 min-w-0">
@@ -214,15 +173,7 @@
 <script>
         const API_BASE = window.location.hostname === 'localhost'
             ? 'http://localhost:3000'
-<<<<<<< Updated upstream
-            : 'https://vox-llive.onrender.com'; // Replace with your actual local IP
-=======
-<<<<<<< Updated upstream
-            : 'https://your-app-name.up.railway.app'; // Replace with your actual local IP
-=======
             : 'https://vox-llive.onrender.com';
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         let pollInterval = null;
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -369,13 +320,8 @@
                 const res = await fetch(`${API_BASE}/questions/${id}/upvote`, { method: 'POST' });
                 if (!res.ok) rollbackUpvote();
             } catch (err) {
-<<<<<<< Updated upstream
-            // Revert if failed
+                // Revert if failed
                 rollbackUpvote();
-=======
-                localStorage.removeItem(`upvoted_${id}`);
-                if (countEl) countEl.textContent = Math.max(parseInt(countEl.textContent) - 1, 0);
->>>>>>> Stashed changes
             }
         };
 
@@ -408,9 +354,5 @@
             }
         }
     </script>
-<<<<<<< Updated upstream
-</body></html>
-=======
 </body>
 </html>
->>>>>>> Stashed changes
